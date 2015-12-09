@@ -6,7 +6,7 @@
 	<display-name>Archetype Created Web Application</display-name>
 	<servlet>
 		<servlet-name>ProvisionerEthereum</servlet-name>
-		<servlet-class>provisioner.ProvisionerEthereumServlet</servlet-class>
+		<servlet-class>blocklinks.provisioner.EthereumServlet</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
