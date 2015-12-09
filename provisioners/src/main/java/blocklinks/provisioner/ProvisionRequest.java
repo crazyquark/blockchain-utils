@@ -14,7 +14,7 @@ public class ProvisionRequest {
 	public ProvisionRequest(String account, float amount, String currency) {
 		this.setAccount(account);
 		this.setAmount(amount);
-		this.currency = currency;
+		this.setCurrency(currency);
 	}
 
 	/**
