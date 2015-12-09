@@ -1,5 +1,7 @@
 package blocklinks.provisioner;
 
+import java.math.BigInteger;
+
 public interface ProvisioningService {
 	
 	/**
@@ -14,4 +16,6 @@ public interface ProvisioningService {
 	 * @return
 	 */
 	public int provision(ProvisionRequest[] requests);
+	
+	public BigInteger[] getAccountBalance(String[] addressList);
 }
