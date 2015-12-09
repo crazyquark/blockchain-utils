@@ -26,6 +26,6 @@ public class ProvisionerEthereumServlet extends HttpServlet {
     }
 
     public void init(ServletConfig config) {
-        this.jsonRpcServer = new JsonRpcServer(new ProvisionerEthereumServlet(), ProvisionerService.class);
+        this.jsonRpcServer = new JsonRpcServer(new ProvisionerServiceEthereum(), ProvisionerService.class);
     }
 }
