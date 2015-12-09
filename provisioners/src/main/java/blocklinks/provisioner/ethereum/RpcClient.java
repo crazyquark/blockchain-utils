@@ -26,6 +26,24 @@ public class RpcClient {
 		} 
 	}
 	
+	public String getCoinbase() {
+		return rpc.eth_coinbase();
+	}
+	
+	public boolean unlockAccount(String address, String secret) {
+		return rpc.personal_unlockAccount(address, secret);
+	}
+	
+	public String sendTransaction(String from, String fromSecret, String to, BigInteger valueWei) {
+		boolean unlock = rpc.personal_unlockAccount(from, fromSecret);
+		
+		if (unlock) {
+			return rpc.eth_sendTransaction(from, to, valueWei);
+		}
+		
+		return null;
+	}
+	
 	public BigInteger getBalance(String address) {
 		String balance = rpc.eth_getBalance(address);
 	
