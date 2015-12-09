@@ -38,10 +38,14 @@ public class RpcClient {
 		boolean unlock = rpc.personal_unlockAccount(from, fromSecret);
 		
 		if (unlock) {
-			return rpc.eth_sendTransaction(from, to, valueWei);
+			return this.sendTransaction(from, to, valueWei);
 		}
 		
 		return null;
+	}
+	
+	public String sendTransaction(String from, String to, BigInteger valueWei) {
+		return rpc.eth_sendTransaction(from, to, valueWei);
 	}
 	
 	public BigInteger getBalance(String address) {
