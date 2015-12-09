@@ -14,7 +14,15 @@ public class EthereumServlet extends HttpServlet {
 	 * Is this serializable or dancer?
 	 */
 	private static final long serialVersionUID = -7702784587269520126L;
+	
+	/**
+	 * JSON-RPC server to use
+	 */
 	private JsonRpcServer jsonRpcServer;
+	/**
+	 * Ethereum funding service
+	 */
+	private EthereumService ethService;
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
     	try {
@@ -26,6 +34,7 @@ public class EthereumServlet extends HttpServlet {
     }
 
     public void init(ServletConfig config) {
-        this.jsonRpcServer = new JsonRpcServer(new EthereumService(), ProvisioningService.class);
+    	this.ethService = new EthereumService("","");
+        this.jsonRpcServer = new JsonRpcServer(this.ethService, ProvisioningService.class);
     }
 }

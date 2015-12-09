@@ -1,0 +1,13 @@
+{
+  "jsonrpc":"2.0",
+  "id":"1",
+  "method":"provision",
+  "params":
+    [
+      [{
+        "amount":"20",
+        "account":"0xFFFFF",
+        "currency":"XRP"
+      }]
+    ]
+}
