@@ -3,6 +3,7 @@
  */
 package blocklinks.provisioner;
 
+import java.math.BigInteger;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -119,6 +120,11 @@ public class RippleService implements ProvisioningService {
 	public int provision(ProvisionRequest[] requests) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	public BigInteger[] getAccountBalance(String[] addressList) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
