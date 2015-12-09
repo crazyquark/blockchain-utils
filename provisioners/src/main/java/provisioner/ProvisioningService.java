@@ -1,5 +1,5 @@
 package provisioner;
 
-public interface ProvisionerService {
+public interface ProvisioningService {
 	int getCount();
 }

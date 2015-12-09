@@ -1,6 +1,6 @@
 package provisioner;
 
-public class ProvisionerServiceEthereum implements ProvisionerService {
+public class EthereumService implements ProvisioningService {
 
 	public int getCount() {
 		// TODO Auto-generated method stub

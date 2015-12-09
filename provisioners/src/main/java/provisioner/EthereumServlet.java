@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.googlecode.jsonrpc4j.JsonRpcServer;
 
-public class ProvisionerEthereumServlet extends HttpServlet {
+public class EthereumServlet extends HttpServlet {
 	/**
 	 * Is this serializable or dancer?
 	 */
@@ -26,6 +26,6 @@ public class ProvisionerEthereumServlet extends HttpServlet {
     }
 
     public void init(ServletConfig config) {
-        this.jsonRpcServer = new JsonRpcServer(new ProvisionerServiceEthereum(), ProvisionerService.class);
+        this.jsonRpcServer = new JsonRpcServer(new EthereumService(), ProvisioningService.class);
     }
 }
