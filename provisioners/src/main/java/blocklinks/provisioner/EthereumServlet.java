@@ -1,4 +1,4 @@
-package provisioner;
+package blocklinks.provisioner;
 
 import java.io.IOException;
 
