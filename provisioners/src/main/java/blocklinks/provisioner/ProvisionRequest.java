@@ -6,6 +6,15 @@ public class ProvisionRequest {
 	private String currency;
 	
 	/**
+	 * Required for JSON serialization
+	 */
+	public ProvisionRequest() {
+		this.setAccount("0x0");
+		this.setAmount(0);
+		this.setCurrency("XRP");
+	}
+	
+	/**
 	 * Create a provision request
 	 * 
 	 * @param account account to send currency to
