@@ -44,49 +44,6 @@ public class RippleService implements ProvisioningService {
 		public void setAccount(String account) {
 			this.account = account;
 		}
-		
-	}
-	
-	protected class RippleAccountInfoResp {
-		private String id;
-		private String status;
-		private String type;
-		/**
-		 * @return the id
-		 */
-		public String getId() {
-			return id;
-		}
-		/**
-		 * @param id the id to set
-		 */
-		public void setId(String id) {
-			this.id = id;
-		}
-		/**
-		 * @return the status
-		 */
-		public String getStatus() {
-			return status;
-		}
-		/**
-		 * @param status the status to set
-		 */
-		public void setStatus(String status) {
-			this.status = status;
-		}
-		/**
-		 * @return the type
-		 */
-		public String getType() {
-			return type;
-		}
-		/**
-		 * @param type the type to set
-		 */
-		public void setType(String type) {
-			this.type = type;
-		}
 	}
 	
 	public RippleService() {
@@ -113,13 +70,9 @@ public class RippleService implements ProvisioningService {
 		if (this.rippledRpcClient != null) {
 			try {
 				@SuppressWarnings("unchecked")
-				LinkedHashMap<String, Object> result = this.rippledRpcClient.invoke("account_info", new Object[] { 
-					Collections.unmodifiableMap(new HashMap<String, String>() {
-					{
-						put("account", "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh");
-					}
-				})}, LinkedHashMap.class);
-				
+				LinkedHashMap<String, Object> result = this.rippledRpcClient.invoke("account_info", 
+						new Object[] { new RippleAccountInfoReq() }, LinkedHashMap.class);
+	
 				return result.toString();
 			} catch (Throwable e) {
 				// TODO Auto-generated catch block
