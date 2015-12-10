@@ -6,6 +6,9 @@ package blocklinks.provisioner;
 import java.math.BigInteger;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.googlecode.jsonrpc4j.JsonRpcHttpClient;
 
@@ -104,10 +107,16 @@ public class RippleService implements ProvisioningService {
 	/* (non-Javadoc)
 	 * @see blocklinks.provisioner.ProvisioningService#getRootAccount()
 	 */
+	@SuppressWarnings("serial")
 	public String getRootAccount() {
 		if (this.rippledRpcClient != null) {
 			try {
-				return this.rippledRpcClient.invoke("account_info", new RippleAccountInfoReq(), RippleAccountInfoResp.class).toString();
+				return this.rippledRpcClient.invoke("account_info", new Object[] { 
+					Collections.unmodifiableMap(new HashMap<String, String>() {
+					{
+						put("account", "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh");
+					}
+				})}, Object.class).toString();
 			} catch (Throwable e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
