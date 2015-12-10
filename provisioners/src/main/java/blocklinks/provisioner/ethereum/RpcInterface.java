@@ -1,7 +1,5 @@
 package blocklinks.provisioner.ethereum;
 
-import java.math.BigInteger;
-
 import blocklinks.provisioner.ethereum.pojo.Transaction;
 
 public interface RpcInterface {
