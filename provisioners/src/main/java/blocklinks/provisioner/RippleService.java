@@ -86,10 +86,13 @@ public class RippleService implements ProvisioningService {
 	}
 	
 	public RippleService() {
-		// TODO externalize this
+		this("localhost", 5005);
+	}
+	
+	public RippleService(String host, int port) {
 		URL rippledRpcHost = null;
 		try {
-			rippledRpcHost = new URL("http://localhost:5005/");
+			rippledRpcHost = new URL("http://" + host + ":" + Integer.toString(port) + "/");
 			
 			this.rippledRpcClient = new JsonRpcHttpClient(rippledRpcHost);
 		} catch (MalformedURLException e) {

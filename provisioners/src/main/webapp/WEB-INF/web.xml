@@ -3,14 +3,27 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
-	<display-name>Archetype Created Web Application</display-name>
+	<display-name>Provisioning Services</display-name>
+
+	<!-- Ethereum -->
 	<servlet>
-		<servlet-name>ProvisionerEthereum</servlet-name>
+		<servlet-name>Ethereum</servlet-name>
 		<servlet-class>blocklinks.provisioner.EthereumServlet</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
-		<servlet-name>ProvisionerEthereum</servlet-name>
+		<servlet-name>Ethereum</servlet-name>
 		<url-pattern>/eth</url-pattern>
+	</servlet-mapping>
+
+	<!-- Ripple -->
+	<servlet>
+		<servlet-name>Ripple</servlet-name>
+		<servlet-class>blocklinks.provisioner.RippleServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>Ripple</servlet-name>
+		<url-pattern>/ripple</url-pattern>
 	</servlet-mapping>
 </web-app>
