@@ -8,6 +8,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import com.googlecode.jsonrpc4j.JsonRpcHttpClient;
@@ -111,12 +112,15 @@ public class RippleService implements ProvisioningService {
 	public String getRootAccount() {
 		if (this.rippledRpcClient != null) {
 			try {
-				return this.rippledRpcClient.invoke("account_info", new Object[] { 
+				@SuppressWarnings("unchecked")
+				LinkedHashMap<String, Object> result = this.rippledRpcClient.invoke("account_info", new Object[] { 
 					Collections.unmodifiableMap(new HashMap<String, String>() {
 					{
 						put("account", "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh");
 					}
-				})}, Object.class).toString();
+				})}, LinkedHashMap.class);
+				
+				return result.toString();
 			} catch (Throwable e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
