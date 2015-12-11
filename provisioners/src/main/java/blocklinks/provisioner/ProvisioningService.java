@@ -15,7 +15,7 @@ public interface ProvisioningService {
 	 * @param requests requests to execute
 	 * @return
 	 */
-	public int provision(ProvisionRequest[] requests);
+	public String[] provision(ProvisionRequest[] requests);
 	
 	public BigInteger[] getAccountBalance(String[] addressList);
 }

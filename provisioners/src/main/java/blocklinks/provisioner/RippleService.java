@@ -82,9 +82,9 @@ public class RippleService implements ProvisioningService {
 	/* (non-Javadoc)
 	 * @see blocklinks.provisioner.ProvisioningService#provision(blocklinks.provisioner.ProvisionRequest[])
 	 */
-	public int provision(ProvisionRequest[] requests) {
+	public String[] provision(ProvisionRequest[] requests) {
 		// TODO Auto-generated method stub
-		return 0;
+		return null;
 	}
 
 	public BigInteger[] getAccountBalance(String[] addressList) {

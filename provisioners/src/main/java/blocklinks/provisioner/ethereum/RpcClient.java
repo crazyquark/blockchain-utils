@@ -7,6 +7,7 @@ import com.googlecode.jsonrpc4j.JsonRpcHttpClient;
 import com.googlecode.jsonrpc4j.ProxyUtil;
 
 import blocklinks.provisioner.ethereum.pojo.Transaction;
+import blocklinks.provisioner.ethereum.pojo.TransactionReceipt;
 
 public class RpcClient {
 	private RpcInterface rpc;
@@ -18,7 +19,6 @@ public class RpcClient {
 			url = new URL("http://" + hostname + "/");
 			JsonRpcHttpClient rpcClient = new JsonRpcHttpClient(url);
 			rpc = ProxyUtil.createClientProxy(getClass().getClassLoader(), RpcInterface.class, rpcClient);
-			
 
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
@@ -67,5 +67,9 @@ public class RpcClient {
 		}
 
 		return new BigInteger(balance, 16);
+	}
+
+	public TransactionReceipt getTransactionReceipt(String txHash) {
+		return rpc.eth_getTransactionReceipt(txHash);
 	}
 }

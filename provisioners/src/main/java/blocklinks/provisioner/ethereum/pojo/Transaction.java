@@ -3,7 +3,7 @@ package blocklinks.provisioner.ethereum.pojo;
 import java.math.BigInteger;
 
 public class Transaction {
-	public String from;
+	
 	public String getFrom() {
 		return from;
 	}
@@ -34,8 +34,10 @@ public class Transaction {
 	public void setValue(BigInteger value) {
 		this.value = value;
 	}
-	public String to;
-	public BigInteger gas;
-	public BigInteger gasPrice;
-	public BigInteger value;
+	
+	public String 		from;
+	public String 		to;
+	public BigInteger 	gas;
+	public BigInteger 	gasPrice;
+	public BigInteger 	value;
 }

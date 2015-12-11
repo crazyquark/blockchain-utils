@@ -1,6 +1,11 @@
 package blocklinks.provisioner;
 
 import java.io.IOException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.http.HttpServlet;
@@ -19,6 +24,7 @@ public class EthereumServlet extends HttpServlet {
 	 * JSON-RPC server to use
 	 */
 	private JsonRpcServer jsonRpcServer;
+	private ScheduledExecutorService executor;
 	/**
 	 * Ethereum funding service
 	 */
@@ -33,8 +39,21 @@ public class EthereumServlet extends HttpServlet {
 		}
     }
 
+    @Override
     public void init(ServletConfig config) {
-    	this.ethService = new EthereumService("","");
+    	this.executor = Executors.newScheduledThreadPool(2);
+    	this.ethService = new EthereumService("","secret", executor);
         this.jsonRpcServer = new JsonRpcServer(this.ethService, ProvisioningService.class);
+    }
+    
+    @Override
+    public void destroy() {
+    	this.executor.shutdown();
+    	try {
+			this.executor.awaitTermination(1, TimeUnit.SECONDS);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 }
