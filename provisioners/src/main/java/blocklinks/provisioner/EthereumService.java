@@ -50,7 +50,7 @@ public class EthereumService implements ProvisioningService {
 		return rootAccount;
 	}
 
-	public void ListenForTxReceipt(final String txHash, final int checkIntervalMillis, final int checks,
+	private void listenForTxReceipt(final String txHash, final int checkIntervalMillis, final int checks,
 			final ReceiptCallback callback) {
 
 		try {
@@ -65,7 +65,7 @@ public class EthereumService implements ProvisioningService {
 						} else if (receipt != null && receipt.getBlockNumber() != null) {
 							callback.success(receipt);
 						} else {
-							ListenForTxReceipt(txHash, checkIntervalMillis, checks - 1, callback);
+							listenForTxReceipt(txHash, checkIntervalMillis, checks - 1, callback);
 						}
 					}
 
@@ -98,7 +98,7 @@ public class EthereumService implements ProvisioningService {
 					final String txHash = rpc.sendTransaction(from, to, wei);
 					txHashes[it++] = txHash;
 					System.out.println("Submitted tx " + txHash + "!");
-					ListenForTxReceipt(txHash, receiptCheckIntervalMillis, receiptMaxChecks, new ReceiptCallback() {
+					listenForTxReceipt(txHash, receiptCheckIntervalMillis, receiptMaxChecks, new ReceiptCallback() {
 						public void success(TransactionReceipt receipt) {
 							System.out.println(
 								"Transaction " + txHash + " has been mined into block " + receipt.getBlockNumber()
